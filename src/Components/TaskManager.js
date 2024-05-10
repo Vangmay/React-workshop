@@ -2,71 +2,28 @@ import React from "react";
 import { useState } from "react";
 import TaskList from "./TaskList";
 
-const defaultTasks = [
-  {
-    task: "Wash the dishes",
-    completed: false,
-  },
-  {
-    task: "Buy more toilet paper",
-    completed: true,
-  },
-  {
-    task: "Collect the mail",
-    completed: true,
-  },
-];
+const defaultTasks = ["Wash dishes", "Collect mail", "give a react workshop"];
 
 function TaskManager() {
-  const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState(defaultTasks);
-  function handleNewTaskSubmit(event) {
-    event.preventDefault();
-    setTasks([{ task: newTask, completed: false }, ...tasks]);
-    setNewTask("");
-  }
-  function handleTaskToggle(i) {
-    setTasks([
-      ...tasks.slice(0, i),
-      { task: tasks[i].task, completed: !tasks[i].completed },
-      ...tasks.slice(i + 1),
-    ]);
-  }
-  function handleTaskEdit(i, newTask) {
-    setTasks([
-      ...tasks.slice(0, i),
-      { task: newTask, completed: false },
-      ...tasks.slice(i + 1),
-    ]);
-  }
+  const [newTask, setNewTask] = useState();
 
-  function handleTaskDelete(i) {
-    setTasks([...tasks.slice(0, i), ...tasks.slice(i + 1)]);
+  function handleAddTask(e) {
+    e.preventDefault();
+    setTasks([newTask, ...tasks]);
+    setNewTask("");
   }
 
   return (
     <main>
-      <h2>Add new task</h2>
+      <h2>Add new tasks</h2>
       <form>
-        <input
-          type="text"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-        />
-        <button type="submit" onClick={handleNewTaskSubmit}>
-          Add
+        <input value={newTask} onChange={(e) => setNewTask(e.target.value)} />
+        <button type="submit" onClick={(e) => handleAddTask(e)}>
+          Add task
         </button>
       </form>
-      {tasks.length > 0 ? (
-        <TaskList
-          tasks={tasks}
-          onTaskToggle={handleTaskToggle}
-          onEditTask={handleTaskEdit}
-          onDeleteTask={handleTaskDelete}
-        />
-      ) : (
-        <p>There are no tasks left....</p>
-      )}
+      <TaskList tasks={tasks} />
     </main>
   );
 }
