@@ -31,11 +31,7 @@ function TaskManager() {
           Add task
         </button>
       </form>
-      <TaskList
-        tasks={tasks}
-        onDeleteTask={handleTaskDelete}
-        onEditTask={handleTaskEdit}
-      />
+      <TaskList tasks={tasks} setTasks={setTasks} />
     </main>
   );
 }

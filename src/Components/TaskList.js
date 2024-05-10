@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import Task from "./Task";
 
-function TaskList({ tasks, onEditTask, onDeleteTask }) {
+function TaskList({ tasks, setTasks }) {
   const [updateTask, setUpdateTask] = useState("");
   return (
     <>
@@ -18,7 +19,8 @@ function TaskList({ tasks, onEditTask, onDeleteTask }) {
         {tasks.map((task, i) => {
           return (
             <>
-              <tr key={i}>
+              <Task task={task} i={i} tasks={tasks} setTasks={setTasks} />
+              {/* <tr key={i}>
                 <td>{i + 1}</td>
                 <td>{task}</td>
                 <input type="checkbox" />
@@ -38,7 +40,7 @@ function TaskList({ tasks, onEditTask, onDeleteTask }) {
                 >
                   Edit
                 </button>
-              </tr>
+              </tr> */}
             </>
           );
         })}
