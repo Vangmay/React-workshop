@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function WelcomeBanner() {
+function WelcomeBanner({ numTasks }) {
   const [name, setName] = useState();
 
   function handleNameChange() {
@@ -18,6 +18,7 @@ function WelcomeBanner() {
       <h1>Orbital todos</h1>
       <h2>Welcome {name}</h2>
       <button onClick={handleNameChange}>Change name</button>
+      <p>You have {numTasks} tasks today</p>
     </header>
   );
 }
