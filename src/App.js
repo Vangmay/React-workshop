@@ -3,8 +3,6 @@ import { useState } from "react";
 import WelcomeBanner from "./Components/WelcomeBanner";
 import TaskManager from "./Components/TaskManager";
 
-const defaultTasks = ["Wash Dishes", "Laundry", "Shower"];
-
 function App() {
   const [name, setName] = useState("");
 

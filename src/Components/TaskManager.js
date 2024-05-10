@@ -8,6 +8,14 @@ function TaskManager() {
   const [tasks, setTasks] = useState(defaultTasks);
   const [newTask, setNewTask] = useState();
 
+  function handleTaskEdit(i, updateTask) {
+    setTasks([...tasks.slice(0, i), updateTask, ...tasks.slice(i + 1)]);
+  }
+
+  function handleTaskDelete(i) {
+    setTasks([...tasks.slice(0, i), ...tasks.slice(i + 1)]);
+  }
+
   function handleAddTask(e) {
     e.preventDefault();
     setTasks([newTask, ...tasks]);
@@ -23,7 +31,11 @@ function TaskManager() {
           Add task
         </button>
       </form>
-      <TaskList tasks={tasks} />
+      <TaskList
+        tasks={tasks}
+        onDeleteTask={handleTaskDelete}
+        onEditTask={handleTaskEdit}
+      />
     </main>
   );
 }
