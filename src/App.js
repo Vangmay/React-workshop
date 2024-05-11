@@ -2,28 +2,27 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import WelcomeBanner from "./Components/WelcomeBanner";
 import TaskManager from "./Components/TaskManager";
-import FactOfTheDay from "./Components/FactOfTheDay";
 
-function getStoredTasks() {
-  const rawTasks = window.localStorage.getItem("tasks");
-  if (rawTasks != null) {
-    return JSON.parse(rawTasks);
-  } else {
-    return [];
-  }
-}
+// function getStoredTasks() {
+//   const rawTasks = window.localStorage.getItem("tasks");
+//   if (rawTasks != null) {
+//     return JSON.parse(rawTasks);
+//   } else {
+//     return [];
+//   }
+// }
 
-function setStoredTasks(newTasks) {
-  window.localStorage.setItem("tasks", JSON.stringify(newTasks));
-}
+// function setStoredTasks(newTasks) {
+//   window.localStorage.setItem("tasks", JSON.stringify(newTasks));
+// }
 
 function App() {
   const [name, setName] = useState("");
-  const [tasks, setTasks] = useState(getStoredTasks());
+  const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    setStoredTasks(tasks);
-  }, [tasks]);
+  // useEffect(() => {
+  //   setStoredTasks(tasks);
+  // }, [tasks]);
 
   return (
     <>
@@ -31,7 +30,7 @@ function App() {
       <br />
       <TaskManager tasks={tasks} setTasks={setTasks} />
       <br />
-      <FactOfTheDay />
+      {/* <FactOfTheDay /> */}
     </>
   );
 }

@@ -1,16 +1,16 @@
 import React from "react";
 import { useState } from "react";
 
-function getStoredName() {
-  return window.localStorage.getItem("name") ?? "";
-}
+// function getStoredName() {
+//   return window.localStorage.getItem("name") ?? "";
+// }
 
-function setStoredName(newName) {
-  window.localStorage.setItem("name", newName);
-}
+// function setStoredName(newName) {
+//   window.localStorage.setItem("name", newName);
+// }
 
 function WelcomeBanner({ numTasks }) {
-  const [name, setName] = useState(getStoredName());
+  const [name, setName] = useState("");
   const hasName = name.length > 0;
 
   function handleNameChange() {
@@ -19,7 +19,7 @@ function WelcomeBanner({ numTasks }) {
       setName("");
     } else {
       setName(newName);
-      setStoredName(newName);
+      // setStoredName(newName);
     }
   }
 
@@ -28,7 +28,14 @@ function WelcomeBanner({ numTasks }) {
       <h1>Orbital todos</h1>
       <h2>Welcome {name}</h2>
       <button onClick={handleNameChange}>Change name</button>
-      <p>You have {numTasks} tasks today</p>
+      {numTasks != 0 ? (
+        <p>
+          {" "}
+          You have <strong>{numTasks} today</strong>
+        </p>
+      ) : (
+        <p>You have no tasks today!!!</p>
+      )}
     </header>
   );
 }
