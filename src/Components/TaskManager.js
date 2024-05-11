@@ -1,27 +1,46 @@
 import React from "react";
 import { useState } from "react";
 import TaskList from "./TaskList";
+import { Button, Container, Box, TextField } from "@mui/material";
 
 function TaskManager({ tasks, setTasks }) {
-  const [newTask, setNewTask] = useState();
-
-  function handleAddTask(e) {
-    e.preventDefault();
-    setTasks([newTask, ...tasks]);
+  const [newTask, setNewTask] = useState("");
+  function handleNewTaskSubmit(event) {
+    event.preventDefault();
+    setTasks([{ task: newTask, completed: false }, ...tasks]);
     setNewTask("");
   }
 
   return (
-    <main>
-      <h2>Add new tasks</h2>
-      <form>
-        <input value={newTask} onChange={(e) => setNewTask(e.target.value)} />
-        <button type="submit" onClick={(e) => handleAddTask(e)}>
-          Add task
-        </button>
-      </form>
-      <TaskList tasks={tasks} setTasks={setTasks} />
-    </main>
+    <center>
+      <Box component="main" className="container" width="80%">
+        <h2>Add new task</h2>
+        <form>
+          <TextField
+            type="text"
+            value={newTask}
+            onChange={(e) => setNewTask(e.target.value)}
+            variant="outlined"
+            label="Enter a task"
+          />
+          <br />
+          <Button
+            size="large"
+            variant="contained"
+            type="submit"
+            onClick={handleNewTaskSubmit}
+            style={{ margin: "10px" }}
+          >
+            Add
+          </Button>
+        </form>
+        {tasks.length > 0 ? (
+          <TaskList tasks={tasks} setTasks={setTasks} />
+        ) : (
+          <p>There are no tasks left....</p>
+        )}
+      </Box>
+    </center>
   );
 }
 

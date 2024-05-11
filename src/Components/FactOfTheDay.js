@@ -1,4 +1,6 @@
 import { useCallback, useState, useEffect } from "react";
+import Button from "@mui/material/Button";
+import { Box } from "@mui/material";
 
 export default function FactOfTheDay() {
   const [fact, setFact] = useState("Loading...");
@@ -19,10 +21,12 @@ export default function FactOfTheDay() {
   };
 
   return (
-    <div>
+    <center>
       <h2>Here is an interesting fact</h2>
       <p>{fact}</p>
-      <button onClick={handleRefreshClick}>Refresh</button>
-    </div>
+      <Button variant="contained" onClick={handleRefreshClick}>
+        Refresh
+      </Button>
+    </center>
   );
 }

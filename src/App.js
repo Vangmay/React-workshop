@@ -18,7 +18,6 @@ function setStoredTasks(newTasks) {
 }
 
 function App() {
-  const [name, setName] = useState("");
   const [tasks, setTasks] = useState(getStoredTasks());
 
   useEffect(() => {
@@ -26,13 +25,11 @@ function App() {
   }, [tasks]);
 
   return (
-    <>
+    <div>
       <WelcomeBanner numTasks={tasks.length} />
-      <br />
       <TaskManager tasks={tasks} setTasks={setTasks} />
-      <br />
       <FactOfTheDay />
-    </>
+    </div>
   );
 }
 
