@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import WelcomeBanner from "./Components/WelcomeBanner";
 import TaskManager from "./Components/TaskManager";
+import FactOfTheDay from "./Components/FactOfTheDay";
 
 // function getStoredTasks() {
 //   const rawTasks = window.localStorage.getItem("tasks");
@@ -30,7 +31,7 @@ function App() {
       <br />
       <TaskManager tasks={tasks} setTasks={setTasks} />
       <br />
-      {/* <FactOfTheDay /> */}
+      <FactOfTheDay />
     </>
   );
 }
