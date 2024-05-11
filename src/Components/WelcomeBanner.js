@@ -1,16 +1,16 @@
 import React from "react";
 import { useState } from "react";
 
-// function getStoredName() {
-//   return window.localStorage.getItem("name") ?? "";
-// }
+function getStoredName() {
+  return window.localStorage.getItem("name") ?? "";
+}
 
-// function setStoredName(newName) {
-//   window.localStorage.setItem("name", newName);
-// }
+function setStoredName(newName) {
+  window.localStorage.setItem("name", newName);
+}
 
 function WelcomeBanner({ numTasks }) {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(getStoredName());
   const hasName = name.length > 0;
 
   function handleNameChange() {
@@ -19,7 +19,7 @@ function WelcomeBanner({ numTasks }) {
       setName("");
     } else {
       setName(newName);
-      // setStoredName(newName);
+      setStoredName(newName);
     }
   }
 
