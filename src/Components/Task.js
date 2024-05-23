@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { Checkbox, ListItem, TextField, Typography } from "@mui/material";
+import { TableRow, TableCell } from "@mui/material";
 
 function Task({ task, i, tasks, setTasks }) {
   const taskDesc = task.task;
@@ -24,27 +25,22 @@ function Task({ task, i, tasks, setTasks }) {
   }
 
   return (
-    <center>
-      <ListItem
-        divider="bool"
-        style={{
-          width: "80%",
-          margin: "auto",
-          display: "flex",
-          justifyContent: "space-around",
-          border: "1px solid light-gray",
-        }}
-      >
+    <TableRow divider="bool">
+      <TableCell>
         <Typography style={{ color: isTaskCompleted ? "green" : "" }}>
           {taskDesc}
         </Typography>
+      </TableCell>
 
+      <TableCell>
         <Checkbox
           type="checkbox"
           checked={isTaskCompleted}
           onClick={(e) => setIsTaskCompleted(!isTaskCompleted)}
         />
+      </TableCell>
 
+      <TableCell>
         <Button
           style={{ marginRight: "20px" }}
           variant="contained"
@@ -52,7 +48,9 @@ function Task({ task, i, tasks, setTasks }) {
         >
           Delete
         </Button>
+      </TableCell>
 
+      <TableCell>
         {isEditing ? (
           <form aria-label="Edit task form">
             <TextField
@@ -89,8 +87,8 @@ function Task({ task, i, tasks, setTasks }) {
             Edit
           </Button>
         )}
-      </ListItem>
-    </center>
+      </TableCell>
+    </TableRow>
   );
 }
 
