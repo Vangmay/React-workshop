@@ -20,27 +20,6 @@ function TaskList({ tasks, setTasks }) {
           return (
             <>
               <Task task={task} i={i} tasks={tasks} setTasks={setTasks} />
-              {/* <tr key={i}>
-                <td>{i + 1}</td>
-                <td>{task}</td>
-                <input type="checkbox" />
-                <button onClick={() => onDeleteTask(i)}>Delete</button>
-                <input
-                  type="text"
-                  value={updateTask}
-                  onChange={(e) => setUpdateTask(e.target.value)}
-                />
-                <button
-                  type="submit"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onEditTask(i, updateTask);
-                    setUpdateTask("");
-                  }}
-                >
-                  Edit
-                </button>
-              </tr> */}
             </>
           );
         })}
